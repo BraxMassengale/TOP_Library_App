@@ -1,6 +1,7 @@
 // Library array defined
 let myLibrary = [];
-let idNum = 0;
+let idNum = 0; // Global ID number
+
 // Classes
 class Book {
     constructor(author, title, pages, status) {
@@ -62,6 +63,8 @@ submitButton.addEventListener("click", function() {
 const addToLibrary = function(author, title, pages, status) {
     let newBook = new Book(author, title, pages, status);
     myLibrary.push(newBook);
+
+    createBookCard(newBook);
 }
 
 // Delete from library
@@ -73,4 +76,28 @@ const deleteFromLibrary = function(book) {
             break;
         }
     }
+}
+
+// Create Book Card
+const createBookCard = function(book) {
+    let bookCard = document.createElement("div");
+    let titleText = document.createTextNode(book.title);
+    let title = document.createElement("h3");
+
+
+    title.appendChild(titleText);
+    bookCard.appendChild(title);
+    document.getElementById("content").appendChild(bookCard);
+
+
+    bookCard.innerHTML = `
+    <div class="book-card">
+        <div class="book-card-title"><h3>${book.title}</h3></div> <!-- .book-card-title -->
+        <div class="book-card-content">
+            <p>${book.author}, ${book.pages} pages</p>
+            <p>${book.status}</p> 
+            </div> <!-- .book-card-content -->
+            <button id="deleteButton">Delete Book</button>
+    </div> <!-- .book-card -->
+    `
 }
