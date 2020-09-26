@@ -8,22 +8,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>My Library</h1>
+        <header>
+            <h1>My Library</h1>
+        </header>
         <hr>
         <div class="formDiv">
             <h2>Add a book</h2>
             <form id="form" onsubmit="return false">
-                <label for="author">Author</label>
-                <input type="text" id="author" autocomplete="off">
-                <label for="title">Title</label>
-                <input type="text" id="title" autocomplete="off">
-                <label for="pages">No. of pages</label>
-                <input type="number" id="pages" autocomplete="off">
-                <label for="haveRead">Status</label>
-                <input type="radio" id="read" name="status" value="read">
-                <label for="male">Read</label>
-                <input type="radio" id="unread" name="status" value="unread">
-                <label for="female">Unread</label>
+                <div id="authorDiv">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" autocomplete="off">
+                </div>
+                <div id="titleDiv">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" autocomplete="off">
+                </div>
+                <div id="pagesDiv">
+                    <label for="pages">No. of pages</label>
+                    <input type="number" id="pages" autocomplete="off">
+                </div>
+                <div id="statusDiv">
+                    <label for="haveRead">Status</label>
+                    <input type="radio" id="read" name="status" value="read">
+                    <label for="male">Read</label>
+                    <input type="radio" id="unread" name="status" value="unread">
+                    <label for="female">Unread</label>
+                </div>
                 <button type="submit" id="submit">Add Book</button>
             </form>
         </div> <!-- .formDiv -->
