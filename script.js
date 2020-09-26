@@ -103,14 +103,14 @@ const createBookCard = function(book) {
     })
 
     // Change read status
-    document.querySelector("#status").addEventListener("click", function() {
+    bookCard.querySelector("#status").addEventListener("click", function() {
         if(book.status == "read") {
             book.status = "unread";
-            document.querySelector("#status").innerHTML = `${book.status}`;
+            bookCard.querySelector("#status").innerHTML = `${book.status}`;
         }
         else {
             book.status = "read";
-            document.querySelector("#status").innerHTML = `${book.status}`;
+            bookCard.querySelector("#status").innerHTML = `${book.status}`;
         }
     });
 }
