@@ -32,6 +32,7 @@ class Book {
 const theBook = new Book("Shakespeare", "The Best Book Ever", 600, "unread");
 const submitButton = document.getElementById("submit"); 
 const form = document.getElementById("form");
+const content = document.getElementById("content");
 const getRadioVal = function() {
     let val = null;
 
@@ -81,14 +82,8 @@ const deleteFromLibrary = function(book) {
 // Create Book Card
 const createBookCard = function(book) {
     let bookCard = document.createElement("div");
-    let titleText = document.createTextNode(book.title);
-    let title = document.createElement("h3");
-
-
-    title.appendChild(titleText);
-    bookCard.appendChild(title);
     document.getElementById("content").appendChild(bookCard);
-
+    bookCard.id = `"idNum${book.idNum}"`;
 
     bookCard.innerHTML = `
     <div class="book-card">
@@ -99,5 +94,11 @@ const createBookCard = function(book) {
             </div> <!-- .book-card-content -->
             <button id="deleteButton">Delete Book</button>
     </div> <!-- .book-card -->
-    `
+    `;
+
+    bookCard.querySelector("#deleteButton").addEventListener("click", function(){
+        content.removeChild(bookCard);
+        deleteFromLibrary(book);
+    })
 }
+
