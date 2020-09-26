@@ -2,7 +2,7 @@
 let myLibrary = [];
 let idNum = 0; // Global ID number
 
-// Classes
+// Book Object
 class Book {
     constructor(author, title, pages, status) {
         this.author = author;
@@ -29,10 +29,11 @@ class Book {
 }
 
 // Constants 
-const theBook = new Book("Shakespeare", "The Best Book Ever", 600, "unread");
 const submitButton = document.getElementById("submit"); 
 const form = document.getElementById("form");
 const content = document.getElementById("content");
+
+// Get radio value
 const getRadioVal = function() {
     let val = null;
 
@@ -47,15 +48,22 @@ const getRadioVal = function() {
     return val;
 }
 
-// Event Listeners
+// Submit Form
 submitButton.addEventListener("click", function() {
     let author = document.querySelector("#author").value;
     let title = document.querySelector("#title").value;
     let pages = document.querySelector("#pages").value;
     let status = getRadioVal();
 
-    addToLibrary(author, title, pages, status);
-    form.reset();
+    if (author != "" && title != "" && pages >= 1 && status != null) {
+        addToLibrary(author, title, pages, status);
+        form.reset();
+    }
+    else {
+        alert("Please make sure all form fields are filled in correctly.");
+    }
+
+    
 });
 
 
@@ -116,3 +124,6 @@ const createBookCard = function(book) {
 }
 
 
+// Example books
+addToLibrary("Shakespeare", "The Best Book Ever", 600, "unread");
+addToLibrary("Mark Twain", "The Second Best Book Ever", 554, "read");
