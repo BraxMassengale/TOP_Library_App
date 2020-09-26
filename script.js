@@ -84,13 +84,14 @@ const createBookCard = function(book) {
     let bookCard = document.createElement("div");
     document.getElementById("content").appendChild(bookCard);
     bookCard.id = `"idNum${book.idNum}"`;
+    
 
     bookCard.innerHTML = `
     <div class="book-card">
         <div class="book-card-title"><h3>${book.title}</h3></div> <!-- .book-card-title -->
         <div class="book-card-content">
             <p>${book.author}, ${book.pages} pages</p>
-            <p>${book.status}</p> 
+            <a href="#" id="status">${book.status}</a>
             </div> <!-- .book-card-content -->
             <button id="deleteButton">Delete Book</button>
     </div> <!-- .book-card -->
@@ -100,5 +101,18 @@ const createBookCard = function(book) {
         content.removeChild(bookCard);
         deleteFromLibrary(book);
     })
+
+    // Change read status
+    document.querySelector("#status").addEventListener("click", function() {
+        if(book.status == "read") {
+            book.status = "unread";
+            document.querySelector("#status").innerHTML = `${book.status}`;
+        }
+        else {
+            book.status = "read";
+            document.querySelector("#status").innerHTML = `${book.status}`;
+        }
+    });
 }
+
 
